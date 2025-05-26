@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Digital Journal</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <title>My Secret Diary</title>
     <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Turn.js for book effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.1/turn.min.js"></script>
 </head>
 <body>
-    <h1>📖 My Digital Journal</h1>
-    <canvas id="journal-canvas" width="800" height="600"></canvas>
-    <button onclick="addStickyNote()">Add Sticky Note 📝</button>
-    <button onclick="addPolaroid()">Add Polaroid 🖼️</button>
-    <button onclick="saveJournal()">Save Journal 💾</button>
+    <!-- LOCK SCREEN (shown first) -->
+    <div id="lock-screen">
+        <h1>🔒 My Private Diary</h1>
+        <input type="password" id="diary-password" placeholder="Enter your secret key...">
+        <button onclick="unlockDiary()">Open Diary</button>
+    </div>
+
+    <!-- DIARY (hidden until unlocked) -->
+    <div id="diary" style="display:none;">
+        <div id="diary-book">
+            <!-- Page 1 -->
+            <div class="page">
+                <h2>Dear Diary... ✏️</h2>
+                <textarea class="entry" placeholder="Write your heart out..."></textarea>
+            </div>
+            <!-- Page 2 -->
+            <div class="page">
+                <h2>Stickers 🎨</h2>
+                <div class="stickers"></div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
