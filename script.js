@@ -14,7 +14,7 @@ function addStickyNote() {
 }
 
 function addPolaroid() {
-    fabric.Image.fromURL('https://via.placeholder.com/150', (img) => {
+    fabric.Image.fromURL('envelope.png', (img) => { ... });
         img.set({ left: 200, top: 200, scaleX: 0.5, scaleY: 0.5 });
         const polaroid = new fabric.Group([img], { padding: 20, background: 'white' });
         canvas.add(polaroid);
