@@ -1,47 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Secret Diary</title>
+    <title>My Custom Diary</title>
     <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.1/turn.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
 </head>
 <body>
-    <!-- LOCK SCREEN -->
-    <div id="lock-screen">
-        <div class="lock-container">
-            <h1>🔒 My Private Diary</h1>
-            <input type="password" id="diary-password" placeholder="Your secret key...">
-            <button onclick="unlockDiary()">Open Diary</button>
-            <p class="hint">Password hint: our favorite ice cream flavor</p>
-        </div>
+    <!-- COVER CUSTOMIZER -->
+    <div id="cover-maker">
+        <input type="color" id="cover-color" value="#d4a373">
+        <input type="file" id="cover-image" accept="image/*">
+        <button onclick="applyCover()">Apply Cover</button>
     </div>
 
-    <!-- DIARY -->
+    <!-- PAGE TYPE SELECTOR -->
+    <div id="page-options">
+        <button onclick="changePageType('blank')">Blank</button>
+        <button onclick="changePageType('grid')">Grid</button>
+        <button onclick="changePageType('lined')">Lined</button>
+    </div>
+
+    <!-- DIARY DISPLAY -->
     <div id="diary">
-        <div id="diary-book">
-            <!-- PAGE 1 -->
-            <div class="page">
-                <div class="page-content">
-                    <h2>Dear Diary... ✏️</h2>
-                    <textarea class="entry" placeholder="Write your heart out..."></textarea>
-                    <div class="sticker-bin">
-                        <img src="https://i.imgur.com/5xJgZ9P.png" class="sticker" draggable="true" data-sticker="polaroid">
-                        <img src="https://i.imgur.com/XW7JtQ2.png" class="sticker" draggable="true" data-sticker="heart">
-                    </div>
-                </div>
-            </div>
-            
-            <!-- PAGE 2 -->
-            <div class="page">
-                <div class="page-content">
-                    <canvas id="sticker-canvas" width="500" height="300"></canvas>
-                    <button onclick="savePage()">Save Page</button>
-                </div>
-            </div>
-        </div>
+        <canvas id="diary-canvas" width="600" height="800"></canvas>
+    </div>
+
+    <!-- STICKER MENU -->
+    <div id="sticker-menu">
+        <img src="images/polaroid.png" class="sticker-option" data-type="polaroid">
+        <img src="images/washi-tape.png" class="sticker-option" data-type="tape">
     </div>
 
     <script src="script.js"></script>
