@@ -4,29 +4,42 @@
     <title>My Secret Diary</title>
     <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Turn.js for book effect -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.1/turn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
 </head>
 <body>
-    <!-- LOCK SCREEN (shown first) -->
+    <!-- LOCK SCREEN -->
     <div id="lock-screen">
-        <h1>🔒 My Private Diary</h1>
-        <input type="password" id="diary-password" placeholder="Enter your secret key...">
-        <button onclick="unlockDiary()">Open Diary</button>
+        <div class="lock-container">
+            <h1>🔒 My Private Diary</h1>
+            <input type="password" id="diary-password" placeholder="Your secret key...">
+            <button onclick="unlockDiary()">Open Diary</button>
+            <p class="hint">Password hint: our favorite ice cream flavor</p>
+        </div>
     </div>
 
-    <!-- DIARY (hidden until unlocked) -->
-    <div id="diary" style="display:none;">
+    <!-- DIARY -->
+    <div id="diary">
         <div id="diary-book">
-            <!-- Page 1 -->
+            <!-- PAGE 1 -->
             <div class="page">
-                <h2>Dear Diary... ✏️</h2>
-                <textarea class="entry" placeholder="Write your heart out..."></textarea>
+                <div class="page-content">
+                    <h2>Dear Diary... ✏️</h2>
+                    <textarea class="entry" placeholder="Write your heart out..."></textarea>
+                    <div class="sticker-bin">
+                        <img src="https://i.imgur.com/5xJgZ9P.png" class="sticker" draggable="true" data-sticker="polaroid">
+                        <img src="https://i.imgur.com/XW7JtQ2.png" class="sticker" draggable="true" data-sticker="heart">
+                    </div>
+                </div>
             </div>
-            <!-- Page 2 -->
+            
+            <!-- PAGE 2 -->
             <div class="page">
-                <h2>Stickers 🎨</h2>
-                <div class="stickers"></div>
+                <div class="page-content">
+                    <canvas id="sticker-canvas" width="500" height="300"></canvas>
+                    <button onclick="savePage()">Save Page</button>
+                </div>
             </div>
         </div>
     </div>
