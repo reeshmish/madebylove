@@ -1,34 +1,37 @@
-const canvas = new fabric.Canvas('journal-canvas');
+// Set your password here (change "mydiary123" to your own)
+const DIARY_PASSWORD = "rishirishu";
 
-function addStickyNote() {
-    const stickyNote = new fabric.Rect({
-        left: 100,
-        top: 100,
-        width: 150,
-        height: 150,
-        fill: '#fffc9e',
-        shadow: '2px 2px 5px rgba(0,0,0,0.2)',
-        angle: -5,
+function unlockDiary() {
+    const password = document.getElementById("diary-password").value;
+    if (password === DIARY_PASSWORD) {
+        document.getElementById("lock-screen").style.display = "none";
+        document.getElementById("diary").style.display = "block";
+        initDiaryBook();
+    } else {
+        alert("Wrong password! Try again.");
+    }
+}
+
+function initDiaryBook() {
+    // Initialize the book-flip effect
+    $("#diary-book").turn({
+        width: 600,
+        height: 400,
+        autoCenter: true,
+        duration: 1000
     });
-    canvas.add(stickyNote);
 }
 
-function addPolaroid() {
-    fabric.Image.fromURL('envelope.png', (img) => { ... });
-        img.set({ left: 200, top: 200, scaleX: 0.5, scaleY: 0.5 });
-        const polaroid = new fabric.Group([img], { padding: 20, background: 'white' });
-        canvas.add(polaroid);
+// Save entries to localStorage
+function saveEntry(pageNumber, text) {
+    localStorage.setItem(`diary-page-${pageNumber}`, text);
+}
+
+// Load saved entries
+window.onload = function() {
+    document.querySelectorAll(".entry").forEach((textarea, index) => {
+        const savedText = localStorage.getItem(`diary-page-${index + 1}`);
+        if (savedText) textarea.value = savedText;
+        textarea.addEventListener("input", () => saveEntry(index + 1, textarea.value));
     });
-}
-
-function saveJournal() {
-    localStorage.setItem('journalData', JSON.stringify(canvas.toJSON()));
-    alert('Journal saved!');
-}
-
-function loadJournal() {
-    const savedData = localStorage.getItem('journalData');
-    if (savedData) canvas.loadFromJSON(savedData, () => canvas.renderAll());
-}
-
-window.onload = loadJournal;
+};
