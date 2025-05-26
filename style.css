@@ -1,0 +1,20 @@
+body {
+    font-family: 'Caveat', cursive;
+    background: #f5e9d9;
+    text-align: center;
+    padding: 20px;
+}
+#journal-canvas {
+    border: 1px dashed #ccc;
+    margin: 20px auto;
+    background: white;
+}
+button {
+    background: #fffc9e;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+}
