@@ -1,81 +1,45 @@
-body {
-    font-family: 'Caveat', cursive;
-    background: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-    margin: 0;
-    overflow: hidden;
-}
-
-#lock-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-}
-
-.lock-container {
-    background: #fff9e8;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-
-#diary-password {
-    padding: 10px;
-    margin: 10px;
-    font-family: 'Caveat', cursive;
-    font-size: 20px;
-    border: 1px solid #d4a373;
-}
-
-button {
-    background: #d4a373;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-family: 'Caveat', cursive;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#diary {
-    display: none;
-    width: 100vw;
-    height: 100vh;
-}
-
-#diary-book {
-    width: 800px;
-    height: 600px;
-    margin: 20px auto;
-}
-
+/* PAGE STYLES */
 .page {
-    background: url('https://www.transparenttextures.com/patterns/notebook.png');
-    padding: 40px;
-    box-sizing: border-box;
+    width: 600px;
+    height: 800px;
+    margin: 20px auto;
+    position: relative;
 }
 
-.sticker-bin {
-    position: absolute;
+/* GRID PAPER */
+.grid-page {
+    background: 
+        linear-gradient(#e4e4e4 1px, transparent 1px),
+        linear-gradient(90deg, #e4e4e4 1px, transparent 1px),
+        #fff9e8;
+    background-size: 20px 20px;
+}
+
+/* LINED PAPER */
+.lined-page {
+    background: 
+        repeating-linear-gradient(#fff9e8, #fff9e8 29px, #e4e4e4 30px),
+        #fff9e8;
+    background-size: 100% 30px;
+}
+
+/* BLANK PAPER */
+.blank-page {
+    background: #fff9e8;
+}
+
+/* STICKER MENU */
+#sticker-menu {
+    position: fixed;
     bottom: 10px;
-    right: 10px;
+    left: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
 }
 
-.sticker {
+.sticker-option {
     width: 50px;
-    margin: 5px;
     cursor: grab;
-}
-
-#sticker-canvas {
-    border: 1px dashed #d4a373;
-    margin-top: 20px;
+    margin: 5px;
 }
